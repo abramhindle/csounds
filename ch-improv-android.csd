@@ -154,7 +154,7 @@ instr 6
 endin
 
 
-
+;; Code from: http://en.flossmanuals.net/csound/f-csound-on-android/
 
 ;;alwayson "VariablesForControls"
 instr VariablesForControls

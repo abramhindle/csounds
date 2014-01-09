@@ -14,3 +14,6 @@ all: ch-improv.wav ch-improv.png
 
 %.flac: %.wav
 	flac -f -8 $<
+
+loaddroid:
+	adb push ch-improv-android.csd /sdcard/csounds
