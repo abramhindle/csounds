@@ -65,6 +65,7 @@ gisheptbl = 3
 gisquaretbl = 4
 gisawtbl = 5
 
+gkinstr init 1
 
 
 /**************************************************************************/
@@ -171,6 +172,10 @@ endif
 ;;; if gkslider4 > 0 then
 ;;;    gkgrainFrequencyRange = gkslider4 / 10
 ;;; endif
+ktrackpad trigger gktrackpady, 0, 0
+if ktrackpad > 0 then
+   event "i", gkinstr, 0.01, gktrackpady*(0.1+10*gkslider3), 20 + gkslider1 * 2000 * gktrackpadx
+endif
 ;;; if gktrackpady > 0 then
 ;;;        gkDelayModulation = gktrackpady * 2
 ;;;          ; gkGain = gktrackpady * 2 - 1
@@ -182,26 +187,30 @@ endif
 kbutt1 trigger gkbutt1, .5, 0
 if kbutt1 > 0 then
    ;; trigger instr 1
-   event "i", 1, 0.01, 5, gkfreq
+   ;;   event "i", 1, 0.01, 5, gkfreq
+   gkinstr = 1
    kbutt1 = 0
 endif
 kbutt2 trigger gkbutt2, .5, 0
 if kbutt2 > 0 then
    ;; trigger instr 2
-   event "i", 2, 0.01, 5, gkfreq
+   ;;   event "i", 2, 0.01, 5, gkfreq
+   gkinstr = 2
    kbutt2 = 0
 endif
 kbutt3 trigger gkbutt3, .5, 0
 if kbutt3 > 0 then
    ;; trigger instr 3
-   event "i", 3, 0.01, 5, gkfreq
+   ;;   event "i", 3, 0.01, 5, gkfreq
+   gkinstr = 3
    kbutt3 = 0
 endif
 
 kbutt5 trigger gkbutt5, .5, 0
 if kbutt5 > 0 then
    ;; trigger instr 3
-   event "i", 7, 0.01, 5, gkfreq
+   ;;   event "i", 7, 0.01, 5, gkfreq
+   gkinstr = 7
    kbutt5 = 0
 endif
 
@@ -231,7 +240,7 @@ f 5 0 1024 7   -1 1024 1
 t 0 80
 f 0 3600
 i "VariablesForControls" 0 3600
-i7 0 3600 200
+;; i7 0 3600 200
 
 ;;; i"me" 0 5
 ;;; i 1 1 9 256.0
